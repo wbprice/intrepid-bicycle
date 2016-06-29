@@ -16,25 +16,28 @@ module.exports = class SnsService extends Service {
    * Given an SMS number, creates a subscription to a given topic.
    */
 
-  signup(emailAddr, callback) {
+  signup(emailAddress) {
 
-    if (!emailAddr) {
+    this.log.info('should do something!')
+
+    if (!emailAddress) {
       throw 'Please provide an email address.'
     }
 
     const params = {
       Protocol: 'email',
       TopicArn: 'arn:aws:sns:us-east-1:456718055477:langaemail',
-      Endpoint: emailAddr
+      Endpoint: emailAddress
     }
+
+    return 'win sauce'
 
     sns.subscribe(params, (err, data) => {
       if (err) {
-        this.log(err, err.stack)
+        this.log.info(err)
       }
       else {
-        this.log(data)
-        return data
+        this.log.info(data)
       }
     })
 

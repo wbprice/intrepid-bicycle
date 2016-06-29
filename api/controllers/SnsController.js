@@ -11,16 +11,13 @@ module.exports = class SnsController extends Controller{
 
   signup (request, reply) {
 
-    const emailAddress = request.param.emailAddress
+    console.log(request.payload)
 
-    this.app.services.SnsService.signup(emailAddress, (data) => {
-      if (data) {
-        reply.ok()
-      }
-      else {
-        reply.error()
-      }
-    })
+    const emailAddress = request.payload.emailAddress
+
+    reply('things are ok')
+
+    this.app.services.SnsService.signup(emailAddress)
 
   }
 
