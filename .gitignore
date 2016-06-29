@@ -1,4 +1,5 @@
-aws-blaine
+aws-env-vars
+dist
 node_modules
 .tmp
 .DS_STORE
