@@ -20,6 +20,12 @@ module.exports = [
     handler: 'ViewController.index'
   },
 
+  {
+    method: 'GET',
+    path: '/admin',
+    handler: 'ViewController.index'
+  },
+
   /**
    * Constrain the DefaultController.info handler to accept only GET requests.
    */
