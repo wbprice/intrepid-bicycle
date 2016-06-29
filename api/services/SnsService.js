@@ -2,7 +2,7 @@
 
 const Service = require('trails-service')
 const AWS = require('aws-sdk')
-const sns = new AWS.sns()
+const sns = new AWS.SNS()
 
 /**
  * @module SnsService

@@ -8,8 +8,16 @@
  */
 module.exports = {
 
+  views: {
+    engines: {
+      html: require('handlebars')
+    },
+    path: 'templates'
+  },
+
   /**
    * The port to bind the web server to
    */
   port: process.env.PORT || 3000
+
 }
