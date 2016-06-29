@@ -26,6 +26,12 @@ module.exports = [
     handler: 'ViewController.index'
   },
 
+  {
+    method: 'GET',
+    path: '/registration',
+    handler: 'ViewController.index'
+  },
+
   /**
    * Constrain the DefaultController.info handler to accept only GET requests.
    */
@@ -39,6 +45,28 @@ module.exports = [
     method: [ 'POST' ],
     path: '/signup',
     handler: 'SnsController.signup'
+  },
+
+  /**
+   * Student Routes
+   */
+
+  {
+    method: [ 'POST' ],
+    path: '/student/register',
+    handler: 'StudentController.register'
+  },
+
+  {
+    method: [ 'GET' ],
+    path: '/student/list',
+    handler: 'StudentController.list'
+  },
+
+  {
+    method: [ 'DELETE' ],
+    path: '/student',
+    handler: 'StudentController.delete'
   }
 
 ]

@@ -21,14 +21,11 @@ module.exports = {
         query: {
           presets: ['react', 'es2015', 'stage-0']
         }
-      }, {
-        test: /\.scss$/,
-        loaders: [
-          'style',
-          'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-          'sass'
-        ]
-      }, {
+      },
+      {
+        test: /\.css$/, loader: 'style-loader!css-loader'
+      },
+      {
         test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
         loader: 'file-loader?name=fonts/[name].[ext]'
       }, {
