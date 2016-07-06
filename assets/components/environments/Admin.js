@@ -1,6 +1,8 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 
+import ClassesManager from './../ecosystems/ClassesManager'
+
 class Admin extends Component {
 
   componentWillMount() {
@@ -8,14 +10,24 @@ class Admin extends Component {
 
   render() {
     return (
-      <pre>Admin Panel</pre>
+      <section>
+        <h1>Administration Panel</h1>
+        <ClassesManager
+          classes={this.props.classes}
+          dispatch={this.props.dispatch} />
+      </section>
     )
   }
 
 }
 
+Admin.propTypes = {
+  classes: PropTypes.array,
+  dispatch: PropTypes.func
+}
+
 export default connect(
   state => ({
-    state: state
+    classes: state.classes
   })
 )(Admin)
