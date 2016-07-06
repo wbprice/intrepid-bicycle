@@ -46,6 +46,7 @@
     "trails-policy": "^1.0.1",
     "trails-service": "1.0.0-beta-2",
     "uuid": "^2.0.2",
+    "waterline-sqlite3": "^1.0.3",
     "winston": "^2.2"
   },
   "devDependencies": {
