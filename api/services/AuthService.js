@@ -2,6 +2,7 @@
 
 const Service = require('trails-service')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 /**
  * @module AuthService
@@ -15,15 +16,19 @@ module.exports = class AuthService extends Service {
       emailAddress: emailAddress
     })
     .then(auth => {
-
-      this.log.info('auth results!', auth)
-
       return new Promise((resolve, reject) => {
         bcrypt.compare(plaintextPassword, auth[0].password, (err, res) => {
           if (err) reject(err)
           resolve(res)
         })
       })
+    })
+    .then(verdict => {
+      if (verdict) {
+        return jwt.sign({emailAddress: emailAddress}, 'asdfasdfasdfasd', {
+          expiresIn: '1 day'
+        })
+      }
     })
 
   }

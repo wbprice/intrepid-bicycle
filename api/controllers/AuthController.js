@@ -14,10 +14,10 @@ module.exports = class AuthController extends Controller {
     const plaintextPassword = request.payload.plaintextPassword
 
     this.app.services.AuthService.verify(emailAddress, plaintextPassword)
-    .then(response => {
+    .then(token => {
 
-      if (response === true) {
-        reply.redirect('/')
+      if (token) {
+        reply({token})
       }
 
       else {
@@ -28,9 +28,6 @@ module.exports = class AuthController extends Controller {
 
     })
     .catch(error => {
-
-      this.log.info('there was an epic fail and the error is: ', error)
-
       reply.view('login', {
         error: 'There was an error logging in'
       })
