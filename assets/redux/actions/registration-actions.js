@@ -58,7 +58,7 @@ export function submitRegistration(registration) {
 
   return dispatch => {
     dispatch(submitRegistrationRequest())
-    return fetch('/student/register', {
+    return fetch('api/v1/student', {
       method: 'post',
       headers: {
         'Accept': 'application/json',
@@ -83,7 +83,7 @@ export function submitRegistration(registration) {
     .catch(error => {
       dispatch(submitRegistrationFailure(error))
       dispatch(addGlobalAlert(
-        'An account with that email address already exists.',
+        'There was an error creating that account!',
         'danger'
       ))
     })
