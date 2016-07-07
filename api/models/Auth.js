@@ -13,6 +13,7 @@ module.exports = class Auth extends Model {
 
   static schema () {
     return {
+
       emailAddress: {
         type: 'string',
         unique: true
