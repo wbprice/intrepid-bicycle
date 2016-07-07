@@ -12,4 +12,8 @@ module.exports = class ViewController extends Controller {
     reply.view('index')
   }
 
+  login (request, reply) {
+    reply.view('login')
+  }
+
 }
