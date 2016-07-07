@@ -75,8 +75,8 @@ module.exports = [
 
   {
     method: [ 'POST' ],
-    path: '/api/v1/student',
-    handler: 'StudentController.create'
+    path: '/verify',
+    handler: 'AuthController.verify'
   }
 
 ]

@@ -1,7 +1,7 @@
 'use strict'
 
 const Service = require('trails-service')
-const bcrypt = require('bycryptjs')
+const bcrypt = require('bcryptjs')
 
 /**
  * @module AuthService
@@ -11,11 +11,11 @@ module.exports = class AuthService extends Service {
 
   verify (emailAddress, plaintextPassword) {
 
-    this.app.orm.Auth.find({
+    return this.app.orm.Auth.find({
       emailAddress: emailAddress
     })
     .then(auth => {
-      return bcrypt.compare(plaintextPassword, auth.password, (err, res) => {
+      return bcrypt.compare(plaintextPassword, auth[0].password, (err, res) => {
         if (err) throw err
         return res
       })

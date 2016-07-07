@@ -15,9 +15,11 @@ module.exports = class AuthController extends Controller {
 
     this.app.services.AuthService.verify(emailAddress, plaintextPassword)
     .then(response => {
+      this.log.info('passed auth? ', response)
       reply(response)
     })
     .catch(error => {
+      this.log.info('error! ', error)
       reply(error)
     })
 
