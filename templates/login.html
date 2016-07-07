@@ -6,6 +6,10 @@
 
     <style>
 
+      header {
+        margin-bottom: 1em;
+      }
+
       body {
         padding: 30px;
         background: #BDD5C6;
@@ -35,18 +39,24 @@
 
     <section class="login-form">
 
-      <h1>Intrepid Bicycle</h1>
-      <p>Never forget how to learn</p>
+      <header>
+        <h1>Intrepid Bicycle</h1>
+        <span>Never forget how to learn</span>
+      </header>
 
-      <form class="pure-form pure-form-stacked" method="post" action="/login">
+      {{#if error}}
+        <p style="color: red;">{{error}}</p>
+      {{/if}}
+
+      <form class="pure-form pure-form-stacked" method="POST" action="/login">
         <fieldset>
           <legend>Login to continue</legend>
 
-          <label for="email">Email</label>
-          <input type="email" placeholder="Email">
+          <label for="emailAddress">Email</label>
+          <input id="emailAddress" type="email" placeholder="Email">
 
-          <label for="password">Password</label>
-          <input type="password" placeholder="Password">
+          <label for="plaintextPassword">Password</label>
+          <input id="plaintextPassword" type="password" placeholder="Password">
 
           <label for="remember">
             <input id="remember" type="checkbox"> Remember me

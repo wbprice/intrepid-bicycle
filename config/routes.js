@@ -44,6 +44,12 @@ module.exports = [
     handler: 'ViewController.login'
   },
 
+  {
+    method: [ 'POST' ],
+    path: '/login',
+    handler: 'AuthController.login'
+  },
+
   /**
    * Constrain the DefaultController.info handler to accept only GET requests.
    */
