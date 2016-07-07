@@ -3,29 +3,25 @@
 const Model = require('trails-model')
 
 /**
- * @module Student
- * @description Model that contains information about students.
+ * @module Auth
+ * @description Model for containing information related to authorization
  */
-module.exports = class Student extends Model {
+module.exports = class Auth extends Model {
 
   static config () {
   }
 
   static schema () {
     return {
-      name: {
-        type: 'string'
-      },
-
       emailAddress: {
         type: 'string',
         unique: true
       },
 
-      interests: {
+      password: {
         type: 'string'
       }
-
     }
+
   }
 }

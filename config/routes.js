@@ -71,6 +71,12 @@ module.exports = [
     method: [ 'GET' ],
     path: '/signS3',
     handler: 'S3signController.getSignedUrl'
+  },
+
+  {
+    method: [ 'POST' ],
+    path: '/api/v1/student',
+    handler: 'StudentController.create'
   }
 
 ]
