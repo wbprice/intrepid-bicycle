@@ -15,9 +15,11 @@ module.exports = class AuthService extends Service {
       emailAddress: emailAddress
     })
     .then(auth => {
-      return bcrypt.compare(plaintextPassword, auth[0].password, (err, res) => {
-        if (err) throw err
-        return res
+      return new Promise((resolve, reject) => {
+        bcrypt.compare(plaintextPassword, auth[0].password, (err, res) => {
+          if (err) reject(err)
+          resolve(res)
+        })
       })
     })
 
