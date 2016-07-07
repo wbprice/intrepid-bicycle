@@ -48,15 +48,15 @@
         <p style="color: red;">{{error}}</p>
       {{/if}}
 
-      <form class="pure-form pure-form-stacked" method="POST" action="/login">
+      <form class="pure-form pure-form-stacked" method="post" action="/login">
         <fieldset>
           <legend>Login to continue</legend>
 
           <label for="emailAddress">Email</label>
-          <input id="emailAddress" type="email" placeholder="Email">
+          <input id="emailAddress" type="email" name="emailAddress" placeholder="Email">
 
           <label for="plaintextPassword">Password</label>
-          <input id="plaintextPassword" type="password" placeholder="Password">
+          <input id="plaintextPassword" type="password" name="plaintextPassword" placeholder="Password">
 
           <label for="remember">
             <input id="remember" type="checkbox"> Remember me

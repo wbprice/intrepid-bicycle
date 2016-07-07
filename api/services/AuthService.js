@@ -11,8 +11,6 @@ module.exports = class AuthService extends Service {
 
   verify (emailAddress, plaintextPassword) {
 
-    this.log.info('should find the auth for user with email address', emailAddress)
-
     return this.app.orm.Auth.find({
       emailAddress: emailAddress
     })
