@@ -1,32 +1,68 @@
 import React, { PropTypes, Component } from 'react'
 
 import {
-  setRegistrationName,
-  setRegistrationEmailAddress,
-  setRegistrationInterests,
   submitRegistration
 } from './../../redux/actions/registration-actions'
 
 class RegistrationForm extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: '',
+      emailAddress: '',
+      interests: '',
+      password: '',
+      passwordConfirmation: ''
+    }
+  }
+
   setRegistrationName(event) {
     const name = event.target.value
-    this.props.dispatch(setRegistrationName(name))
+    this.setState({
+      name
+    })
   }
 
   setRegistrationEmailAddress(event) {
     const emailAddress = event.target.value
-    this.props.dispatch(setRegistrationEmailAddress(emailAddress))
+    this.setState({
+      emailAddress
+    })
   }
 
   setRegistrationInterests(event) {
     const interests = event.target.value
-    this.props.dispatch(setRegistrationInterests(interests))
+    this.setState({
+      interests
+    })
+  }
+
+  setPassword(event) {
+    const password = event.target.value
+    this.setState({
+      password
+    })
+  }
+
+  setPasswordConfirmation(event) {
+    const passwordConfirmation = event.target.value
+    this.setState({
+      passwordConfirmation
+    })
   }
 
   submitRegistration(event) {
     event.preventDefault()
-    this.props.dispatch(submitRegistration(this.props.registration))
+
+    if (this.state.password !== this.state.passwordConfirmation) {
+
+    }
+
+    else {
+      this.props.dispatch(submitRegistration(this.state))
+    }
+
   }
 
   render() {
@@ -41,7 +77,7 @@ class RegistrationForm extends Component {
           <label htmlFor="name">Name</label>
           <input
             onChange={this.setRegistrationName.bind(this)}
-            value={this.props.registration.name}
+            value={this.state.name}
             id="name"
             type="text"
             placeholder="Name" />
@@ -49,15 +85,31 @@ class RegistrationForm extends Component {
           <label htmlFor="email">Email</label>
           <input
             onChange={this.setRegistrationEmailAddress.bind(this)}
-            value={this.props.registration.emailAddress}
+            value={this.state.emailAddress}
             id="email"
             type="email"
             placeholder="Email" />
 
+          <label htmlFor="password">Password</label>
+          <input
+            onChange={this.setPassword.bind(this)}
+            value={this.state.password}
+            id="password"
+            type="password"
+            placeholder="Password" />
+
+          <label htmlFor="passwordConfirmation">Retype Password</label>
+          <input
+            onChange={this.setPasswordConfirmation.bind(this)}
+            value={this.state.passwordConfirmation}
+            id="passwordConfirmation"
+            type="password"
+            placeholder="Retype Password" />
+
           <label htmlFor="interests">Interests</label>
           <textarea
             onChange={this.setRegistrationInterests.bind(this)}
-            value={this.props.registration.interests}
+            value={this.state.interests}
             id="interests"
             placeholder="What do you want to learn about?"></textarea>
 
