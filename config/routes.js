@@ -32,6 +32,12 @@ module.exports = [
     handler: 'ViewController.index'
   },
 
+  {
+    method: 'GET',
+    path: '/coursework',
+    handler: 'ViewController.index'
+  },
+
   /**
    * Constrain the DefaultController.info handler to accept only GET requests.
    */
@@ -45,6 +51,26 @@ module.exports = [
     method: [ 'POST' ],
     path: '/signup',
     handler: 'SnsController.signup'
+  },
+
+  /**
+   * Coursework Routes
+   */
+
+  {
+    method: [ 'POST' ],
+    path: '/coursework',
+    handler: 'CourseworkController.upload'
+  },
+
+  /**
+   * Get Signed URL for s3 uploads
+   */
+
+  {
+    method: [ 'GET' ],
+    path: '/signS3',
+    handler: 'S3signController.getSignedUrl'
   }
 
 ]

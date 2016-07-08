@@ -8,7 +8,8 @@ class App extends Component {
       <div>
 
         <header>
-          <h1>Intrepid Biped Potatogram</h1>
+          <h1 style={{margin: 0}}>Intrepid Bicycle</h1>
+          <span>Never forget how to learn</span>
         </header>
 
         <Alerts />

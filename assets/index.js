@@ -13,6 +13,7 @@ import App from './components/App'
 import Admin from './components/environments/Admin'
 import Home from './components/environments/Home'
 import Registration from './components/environments/Registration'
+import Coursework from './components/environments/Coursework'
 
 const logger = createLogger()
 const store = createStore(
@@ -29,6 +30,7 @@ render((
         <IndexRoute component={Home} />
         <Route path="/admin" component={Admin} />
         <Route path="/registration" component={Registration} />
+        <Route path="/coursework" component={Coursework} />
       </Route>
     </Router>
   </Provider>

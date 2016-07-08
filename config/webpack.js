@@ -15,23 +15,29 @@ module.exports = {
       publicPath: '/dist/'
     },
     module: {
-      loaders: [{
-        test: /\.js$/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015', 'stage-0']
+      loaders: [
+        {
+          test: /\.js$/,
+          loader: 'babel',
+          query: {
+            presets: ['react', 'es2015', 'stage-0']
+          }
+        },
+        {
+          test: /\.json$/,
+          loader: 'json-loader'
+        },
+        {
+          test: /\.css$/, loader: 'style-loader!css-loader'
+        },
+        {
+          test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+          loader: 'file-loader?name=fonts/[name].[ext]'
+        }, {
+          test: /\.(png|jpg)$/,
+          loader: 'url?limit=25000'
         }
-      },
-      {
-        test: /\.css$/, loader: 'style-loader!css-loader'
-      },
-      {
-        test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader: 'file-loader?name=fonts/[name].[ext]'
-      }, {
-        test: /\.(png|jpg)$/,
-        loader: 'url?limit=25000'
-      }]
+      ]
     }
   }
 }
