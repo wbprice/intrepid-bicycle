@@ -29,7 +29,12 @@ class LoginForm extends Component {
 
   login(event) {
     event.preventDefault()
-    this.props.dispatch(login(this.state))
+    this.props.dispatch(
+      login(
+        this.state.emailAddress,
+        this.state.plaintextPassword
+      )
+    )
   }
 
   render() {
@@ -67,6 +72,10 @@ class LoginForm extends Component {
     )
   }
 
+}
+
+LoginForm.propTypes = {
+  dispatch: PropTypes.func
 }
 
 export default LoginForm

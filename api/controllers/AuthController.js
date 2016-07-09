@@ -16,6 +16,8 @@ module.exports = class AuthController extends Controller {
     this.app.services.AuthService.verify(emailAddress, plaintextPassword)
     .then(token => {
 
+      this.log.info('token! ', token)
+
       if (token) {
         reply({token})
       }
@@ -28,6 +30,9 @@ module.exports = class AuthController extends Controller {
 
     })
     .catch(error => {
+
+      this.log.info('Awwww shit! ', error)
+
       reply.view('login', {
         error: 'There was an error logging in'
       })

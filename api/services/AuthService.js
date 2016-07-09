@@ -12,10 +12,16 @@ module.exports = class AuthService extends Service {
 
   verify (emailAddress, plaintextPassword) {
 
+    this.log.info('emailAddress: ', emailAddress)
+    this.log.info('plaintextPassword: ', plaintextPassword)
+
     return this.app.orm.Auth.find({
       emailAddress: emailAddress
     })
     .then(auth => {
+
+      this.log.info('found something?', auth)
+
       return new Promise((resolve, reject) => {
         bcrypt.compare(plaintextPassword, auth[0].password, (err, res) => {
           if (err) reject(err)
