@@ -63,12 +63,6 @@ export function uploadCourseworkFiles(files) {
           body: file
         })
       })
-      .then(response => {
-        console.log('A file was uploaded! ', response)
-      })
-      .catch(error => {
-        console.log('An error occurred! ', error)
-      })
     })
     .then(response => {
       dispatch(uploadCourseworkFilesSuccess(response))

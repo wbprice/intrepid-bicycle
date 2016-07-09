@@ -1,9 +1,6 @@
 'use strict'
 
 const Service = require('trails-service')
-const AWS = require('aws-sdk')
-AWS.config.region = process.env.AWS_REGION || 'us-east-1'
-const sns = new AWS.SNS
 
 /**
  * @module SnsService
@@ -18,6 +15,10 @@ module.exports = class SnsService extends Service {
    */
 
   signup(emailAddress) {
+
+    const AWS = require('aws-sdk')
+    AWS.config.region = process.env.AWS_REGION || 'us-east-1'
+    const sns = new AWS.SNS
 
     const params = {
       Protocol: 'email',
