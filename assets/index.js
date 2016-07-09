@@ -14,6 +14,7 @@ import Admin from './components/environments/Admin'
 import Home from './components/environments/Home'
 import Registration from './components/environments/Registration'
 import Coursework from './components/environments/Coursework'
+import Login from './components/environments/Login'
 
 const logger = createLogger()
 const store = createStore(
@@ -28,6 +29,7 @@ render((
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
+        <Route path="/login" component={Login} />
         <Route path="/admin" component={Admin} />
         <Route path="/registration" component={Registration} />
         <Route path="/coursework" component={Coursework} />

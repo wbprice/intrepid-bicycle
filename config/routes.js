@@ -41,7 +41,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/login',
-    handler: 'ViewController.login'
+    handler: 'ViewController.index'
   },
 
   {
@@ -83,12 +83,6 @@ module.exports = [
     method: [ 'GET' ],
     path: '/signS3',
     handler: 'S3signController.getSignedUrl'
-  },
-
-  {
-    method: [ 'POST' ],
-    path: '/verify',
-    handler: 'AuthController.verify'
   }
 
 ]
