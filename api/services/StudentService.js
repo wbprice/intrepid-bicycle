@@ -1,6 +1,7 @@
 'use strict'
 
 const Service = require('trails-service')
+const Promise = require('bluebird')
 
 /**
  * @module StudentService

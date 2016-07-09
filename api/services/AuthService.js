@@ -3,6 +3,7 @@
 const Service = require('trails-service')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const jwtSecretKey = process.env.JWT_SECRET_KEY
 
 /**
  * @module AuthService
@@ -10,31 +11,44 @@ const jwt = require('jsonwebtoken')
  */
 module.exports = class AuthService extends Service {
 
-  verify (emailAddress, plaintextPassword) {
+  login (emailAddress, plaintextPassword) {
 
-    this.log.info('emailAddress: ', emailAddress)
-    this.log.info('plaintextPassword: ', plaintextPassword)
-
-    return this.app.orm.Auth.find({
+    return this.app.orm.Auth.findOne({
       emailAddress: emailAddress
     })
-    .then(auth => {
+    .then(account => {
 
-      this.log.info('found something?', auth)
+      const tokenAccount = Object.assign({}, {
+        role: 'student',
+        emailAddress: account.emailAddress
+      })
 
       return new Promise((resolve, reject) => {
-        bcrypt.compare(plaintextPassword, auth[0].password, (err, res) => {
+        bcrypt.compare(plaintextPassword, account.password, (err, res) => {
           if (err) reject(err)
           resolve(res)
         })
       })
+      .then(verdict => {
+        if (verdict) {
+          return jwt.sign(tokenAccount, jwtSecretKey, {
+            expiresIn: '1 day'
+          })
+        }
+      })
+
     })
-    .then(verdict => {
-      if (verdict) {
-        return jwt.sign({emailAddress: emailAddress}, 'asdfasdfasdfasd', {
-          expiresIn: '1 day'
-        })
-      }
+
+  }
+
+  verify (token) {
+
+    return new Promise((resolve, reject) => {
+
+      jwt.verify(token, jwtSecretKey, (err, decoded) => {
+        if (err) reject(err)
+        resolve(decoded)
+      })
     })
 
   }

@@ -1,6 +1,7 @@
 'use strict'
 
 const Controller = require('trails-controller')
+const Boom = require('Boom')
 
 /**
  * @module AuthController
@@ -13,29 +14,40 @@ module.exports = class AuthController extends Controller {
     const emailAddress = request.payload.emailAddress
     const plaintextPassword = request.payload.plaintextPassword
 
-    this.app.services.AuthService.verify(emailAddress, plaintextPassword)
+    this.app.services.AuthService.login(emailAddress, plaintextPassword)
     .then(token => {
-
-      this.log.info('token! ', token)
 
       if (token) {
         reply({token})
       }
 
       else {
-        reply.view('login', {
-          error: 'That user/password combination wasn\'t found.'
-        })
+        reply(Boom.unauthorized('That user/password combination wasn\'t found'))
       }
 
     })
     .catch(error => {
+      reply(Boom.badRequest('There was an error. That\'s all we know.'))
+    })
 
-      this.log.info('Awwww shit! ', error)
+  }
 
-      reply.view('login', {
-        error: 'There was an error logging in'
-      })
+  verify (request, reply) {
+
+    const token = request.query.auth_token
+
+    if (!token || token === 'null') {
+      return reply(Boom.unauthorized('No key was passed'))
+    }
+
+    this.app.services.AuthService.verify(token)
+    .then(response => {
+      if (response) {
+        reply()
+      }
+      else {
+        reply(Boom.unauthorized('An invalid key was passed'))
+      }
     })
 
   }

@@ -59,7 +59,7 @@ export function submitRegistration(registration) {
 
   return dispatch => {
     dispatch(submitRegistrationRequest())
-    return fetch('api/v1/student', {
+    return fetch('/api/v1/student', {
       method: 'post',
       headers: {
         'Accept': 'application/json',

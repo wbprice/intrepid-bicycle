@@ -1,7 +1,6 @@
 'use strict'
 
 const Controller = require('trails-controller')
-const mime = require('mime')
 
 /**
  * @module S3signController

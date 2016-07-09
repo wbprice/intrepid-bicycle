@@ -16,9 +16,11 @@ module.exports = class StudentController extends Controller {
 
     this.app.services.StudentService.create(student)
     .then(response => {
+      this.log.info('response: ', response)
       reply(response)
     })
     .catch(error => {
+      this.log.info('error: ', error)
       reply(error)
     })
   }

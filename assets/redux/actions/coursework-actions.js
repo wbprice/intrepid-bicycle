@@ -50,11 +50,15 @@ export function uploadCourseworkFiles(files) {
 
     dispatch(uploadCourseworkFilesRequest())
 
+    const token = localStorage.getItem('auth_token')
+
     return Promise.map(files, file => {
 
       const filetype = mime.lookup(file.name)
 
-      return fetch(`/signS3?filename=${uuid.v4()}&filetype=${filetype}`)
+      return fetch(`/signS3?filename=${uuid.v4()}&filetype=${filetype}`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
       .then(checkStatus)
       .then(response => response.json())
       .then(response => {
