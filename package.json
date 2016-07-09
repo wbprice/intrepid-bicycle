@@ -21,6 +21,7 @@
     "bcrypt": "^0.8.7",
     "bcryptjs": "^2.3.0",
     "bluebird": "^3.4.1",
+    "fs": "0.0.2",
     "handlebars": "^4.0.5",
     "isomorphic-fetch": "^2.2.1",
     "json-loader": "^0.5.4",
