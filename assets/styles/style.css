@@ -9,7 +9,11 @@ h1, h2, h3, h4, h5 {
 
 .app-header .branding {
   display: inline-block;
-  text-align: center;
+}
+
+.app-header .app-header-login {
+  display: inline-block;
+  float: right;
 }
 
 .app-header h1 {
@@ -19,4 +23,42 @@ h1, h2, h3, h4, h5 {
 body {
   margin-top: 96px;
   background: url("../images/sayagata-400px.png");
+}
+
+.app-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.button-xsmall {
+  font-size: 70%;
+}
+
+.button-small {
+  font-size: 85%;
+}
+
+.button-large {
+  font-size: 110%;
+}
+
+.button-xlarge {
+  font-size: 125%;
+}
+
+.Popover {
+  z-index: 4;
+}
+
+.Popover-body {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 2rem 2rem;
+  background: white;
+  border-radius: 0.3rem;
+  border: 1px solid blue;
+}
+
+.Popover-tipShape {
+  fill: blue;
 }

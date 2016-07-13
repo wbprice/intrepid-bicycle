@@ -11,7 +11,9 @@ class App extends Component {
         <Header />
         <Alerts />
 
-        { this.props.children }
+        <section className="app-container">
+          { this.props.children }
+        </section>
 
       </div>
     )
