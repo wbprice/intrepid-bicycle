@@ -54,6 +54,7 @@ export function login(emailAddress, plaintextPassword) {
       dispatch(loginSuccess(response))
     })
     .catch(error => {
+      debugger
       dispatch(loginFailure(error))
     })
   }
