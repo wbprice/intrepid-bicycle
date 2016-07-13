@@ -38,6 +38,24 @@ module.exports = [
     handler: 'ViewController.index'
   },
 
+  {
+    method: 'GET',
+    path: '/login',
+    handler: 'ViewController.index'
+  },
+
+  {
+    method: [ 'POST' ],
+    path: '/login',
+    handler: 'AuthController.login'
+  },
+
+  {
+    method: [ 'GET' ],
+    path: '/auth/verify',
+    handler: 'AuthController.verify'
+  },
+
   /**
    * Constrain the DefaultController.info handler to accept only GET requests.
    */
@@ -54,9 +72,17 @@ module.exports = [
   },
 
   /**
+   * Student Creation Route
+   */
+  {
+    method: [ 'POST' ],
+    path: '/api/v1/student',
+    handler: 'StudentController.create'
+  },
+
+  /**
    * Coursework Routes
    */
-
   {
     method: [ 'POST' ],
     path: '/coursework',
@@ -66,7 +92,6 @@ module.exports = [
   /**
    * Get Signed URL for s3 uploads
    */
-
   {
     method: [ 'GET' ],
     path: '/signS3',

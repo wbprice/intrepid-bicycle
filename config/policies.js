@@ -16,6 +16,12 @@ module.exports = {
 
   DefaultController: {
     info: [ ]
-  }
+  },
+
+  S3signController: {
+    getSignedUrl: [ 'IsStudent.test' ]
+  },
+
+  FootprintController: [ 'Footprint.test' ]
 
 }

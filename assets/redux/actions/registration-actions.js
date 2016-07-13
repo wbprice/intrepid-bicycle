@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import checkStatus from './../util/check-status'
+import bcrypt from 'bcryptjs'
 
 import {
   addGlobalAlert
@@ -58,7 +59,7 @@ export function submitRegistration(registration) {
 
   return dispatch => {
     dispatch(submitRegistrationRequest())
-    return fetch('api/v1/student', {
+    return fetch('/api/v1/student', {
       method: 'post',
       headers: {
         'Accept': 'application/json',
@@ -67,7 +68,8 @@ export function submitRegistration(registration) {
       body: JSON.stringify({
         name: registration.name,
         emailAddress: registration.emailAddress,
-        interests: registration.interests
+        interests: registration.interests,
+        password: bcrypt.hashSync(registration.password, bcrypt.genSaltSync(10))
       })
     })
     .then(checkStatus)
