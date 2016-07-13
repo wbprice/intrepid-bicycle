@@ -23,6 +23,7 @@
     "bluebird": "^3.4.1",
     "boom": "^3.2.2",
     "fs": "0.0.2",
+    "gravatar": "^1.5.2",
     "handlebars": "^4.0.5",
     "hapi-auth-jwt": "^4.0.0",
     "image-loader": "0.0.1",

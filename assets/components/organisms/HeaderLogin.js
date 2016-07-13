@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 import Popover from 'react-popover'
 import LoginForm from '../ecosystems/LoginForm.js'
 
+import {
+  logout
+} from './../../redux/actions/login-actions'
+
 class HeaderLogin extends Component {
 
   constructor(props) {
@@ -18,12 +22,24 @@ class HeaderLogin extends Component {
     })
   }
 
+  logout() {
+    this.setState({
+      isOpen: false
+    })
+    this.props.dispatch(logout())
+  }
+
   render() {
     return (
       <section className="app-header-login">
         {
           this.props.login.user.name ?
-          <span>{this.props.login.user.name}</span>
+          <div>
+            <span>{this.props.login.user.name}</span>
+            <button
+              onClick={this.logout.bind(this)}
+              className="pure-button button-xlarge">Logout</button>
+          </div>
           :
           <Popover
             isOpen={this.state.isOpen}
