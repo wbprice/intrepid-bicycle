@@ -1,17 +1,23 @@
 .app-header {
   padding: .5em 1em;
   background: white;
-}
 
-.app-header .branding {
-  display: inline-block;
-}
+  .app-header-horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-.app-header .app-header-login {
-  display: inline-block;
-  float: right;
-}
+    .branding {
+      h1 {
+        text-transform: uppercase;
+      }
+    }
 
-.app-header h1 {
-  text-transform: uppercase;
+    .app-header-login {
+      display: inline-block;
+      float: right;
+    }
+
+  }
+
 }
