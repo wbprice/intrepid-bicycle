@@ -35,7 +35,7 @@ module.exports = {
           loader: 'file-loader?name=fonts/[name].[ext]'
         }, {
           test: /\.(png|jpg)$/,
-          loader: 'url?limit=25000'
+          loader: 'url-loader'
         }
       ]
     }

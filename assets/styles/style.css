@@ -1,0 +1,22 @@
+h1, h2, h3, h4, h5 {
+  font-family: 'Fjalla One', sans-serif
+}
+
+.app-header {
+  padding: .5em 1em;
+  background: white;
+}
+
+.app-header .branding {
+  display: inline-block;
+  text-align: center;
+}
+
+.app-header h1 {
+  text-transform: uppercase;
+}
+
+body {
+  margin-top: 96px;
+  background: url("../images/sayagata-400px.png");
+}
