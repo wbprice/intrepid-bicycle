@@ -34,8 +34,8 @@ class HeaderLogin extends Component {
       <section className="app-header-login">
         {
           this.props.login.isLoggedIn ?
-          <div>
-            <span>{this.props.login.user.name}</span>
+          <div className="app-header-profile">
+            <span className="app-header-profile-username">{this.props.login.user.name}</span>
             <button
               onClick={this.logout.bind(this)}
               className="pure-button button-xlarge">Logout</button>
