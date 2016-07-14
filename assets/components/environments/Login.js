@@ -7,6 +7,10 @@ class Login extends Component {
   render() {
     return (
       <section>
+        {
+          this.props.login.error &&
+          <span className="warning-text">{this.props.login.error}</span>
+        }
         <LoginForm dispatch={this.props.dispatch} />
       </section>
     )
@@ -15,7 +19,12 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  login: PropTypes.object
 }
 
-export default connect()(Login)
+export default connect(
+  state => ({
+    login: state.login
+  })
+)(Login)

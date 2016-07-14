@@ -24,6 +24,7 @@ const store = createStore(
 )
 
 import 'purecss/build/pure-min.css'
+import './styles/style.scss'
 
 function requireAuth(nextState, replace, cb) {
 

@@ -41,7 +41,7 @@ class LoginForm extends Component {
     return (
       <form
         onSubmit={this.login.bind(this)}
-        className="pure-form pure-form-stacked"
+        className="app-login-form pure-form pure-form-stacked"
         method="post"
         action="/login">
         <fieldset>

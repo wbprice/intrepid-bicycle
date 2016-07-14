@@ -1,0 +1,39 @@
+h1, h2, h3, h4, h5 {
+  font-family: 'Fjalla One', sans-serif
+}
+
+body {
+  margin-top: 96px;
+  background: url("../images/sayagata-400px.png");
+}
+
+.app-container {
+  max-width: 1280px;
+  padding: 0 1em;
+  margin: 0 auto;
+}
+
+/*
+ * General Styles
+ */
+@import 'colors';
+
+/*
+ * Component Styles
+ */
+
+// atoms
+@import 'atoms/Button';
+
+// molecules
+@import 'molecules/Alert';
+
+// organisms
+@import 'organisms/Popover';
+@import 'organisms/HeaderLogin';
+
+// ecosystems
+@import 'ecosystems/Header';
+@import 'ecosystems/LoginForm';
+
+// environments

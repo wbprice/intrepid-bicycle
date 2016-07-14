@@ -1,0 +1,19 @@
+.app-header {
+  padding: .5em 0;
+  background: white;
+
+  .app-header-horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .branding {
+      h1 {
+        text-transform: uppercase;
+        margin: 0;
+      }
+    }
+
+  }
+
+}

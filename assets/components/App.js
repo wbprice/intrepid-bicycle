@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import Alerts from './organisms/Alerts'
+import Header from './ecosystems/Header'
 
 class App extends Component {
 
@@ -7,14 +8,12 @@ class App extends Component {
     return (
       <div>
 
-        <header>
-          <h1 style={{margin: 0}}>Intrepid Bicycle</h1>
-          <span>Never forget how to learn</span>
-        </header>
-
+        <Header />
         <Alerts />
 
-        { this.props.children }
+        <section className="app-container">
+          { this.props.children }
+        </section>
 
       </div>
     )

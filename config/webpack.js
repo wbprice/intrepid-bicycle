@@ -28,14 +28,14 @@ module.exports = {
           loader: 'json-loader'
         },
         {
-          test: /\.css$/, loader: 'style-loader!css-loader'
+          test: /\.s?css$/, loader: 'style-loader!css-loader!sass-loader'
         },
         {
           test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
           loader: 'file-loader?name=fonts/[name].[ext]'
         }, {
           test: /\.(png|jpg)$/,
-          loader: 'url?limit=25000'
+          loader: 'url-loader'
         }
       ]
     }
