@@ -61,19 +61,4 @@ module.exports = class AuthController extends Controller {
 
   }
 
-  resume (request, reply) {
-
-    const token = request.query.auth_token
-
-    if (!token || token === 'null') {
-      return reply(Boom.unauthorized('No user to recover'))
-    }
-
-    this.app.services.AuthService.verify(token)
-    .then(token => {
-      return this.app.orm.Student.findOne({emailAddress: token.emailAddress})
-    })
-
-  }
-
 }

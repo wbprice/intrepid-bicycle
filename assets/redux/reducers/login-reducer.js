@@ -1,7 +1,8 @@
 import {
   LOGOUT,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
+  LOGIN_RESTORE
 } from './../actions/login-actions'
 
 import {
@@ -26,15 +27,15 @@ export default function logiReducer(state = intialState, action) {
       error: 'There was an error'
     })
 
+  case LOGIN_RESTORE:
   case LOGIN_SUCCESS:
     return Object.assign({}, {
       isLoggedIn: true,
-      user: action.response.user,
+      user: action.response && action.response.user || JSON.parse(action.user),
       error: ''
     })
 
   case JOIN_COURSE_SUCCESS:
-    debugger
     return Object.assign({}, {
       courses: action.response.courses
     })

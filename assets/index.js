@@ -9,6 +9,9 @@ import appReducer from './redux/reducers'
 import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
 import fetch from 'isomorphic-fetch'
+import {
+  loginRestore
+} from './redux/actions/login-actions'
 
 import App from './components/App'
 import Admin from './components/environments/Admin'
@@ -39,6 +42,12 @@ function requireAuth(nextState, replace, cb) {
     }
     cb()
   })
+}
+
+const savedUser = localStorage.getItem('user')
+
+if (savedUser) {
+  store.dispatch(loginRestore(savedUser))
 }
 
 render((
