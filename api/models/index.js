@@ -1,4 +1,4 @@
 'use strict'
-exports.Classes = require('./Classes')
+exports.Course = require('./Course')
 exports.Student = require('./Student')
 exports.Auth = require('./Auth')

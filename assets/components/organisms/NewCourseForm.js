@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 
 import {
-  submitNewClass
-} from './../../redux/actions/classes-actions'
+  submitNewCourse
+} from './../../redux/actions/courses-actions'
 
-class NewClassForm extends Component {
+class NewCourseForm extends Component {
 
   constructor(props) {
     super(props)
@@ -17,7 +17,7 @@ class NewClassForm extends Component {
 
   submitNewClass(event) {
     event.preventDefault()
-    this.props.dispatch(submitNewClass(this.state))
+    this.props.dispatch(submitNewCourse(this.state))
   }
 
   setNewClassTitle(event) {
@@ -82,8 +82,8 @@ class NewClassForm extends Component {
 
 }
 
-NewClassForm.propTypes = {
+NewCourseForm.propTypes = {
   dispatch: PropTypes.func
 }
 
-export default NewClassForm
+export default NewCourseForm

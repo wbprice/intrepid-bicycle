@@ -1,20 +1,20 @@
 import React, { PropTypes, Component } from 'react'
 
-import NewClassForm from './../organisms/NewClassForm'
+import NewCourseForm from './../organisms/NewCourseForm'
 
 import {
-  fetchClasses,
-  deleteClass
-} from './../../redux/actions/classes-actions'
+  fetchCourses,
+  deleteCourse
+} from './../../redux/actions/courses-actions'
 
-class ClassesManager extends Component {
+class CoursesManager extends Component {
 
   componentWillMount() {
-    this.props.dispatch(fetchClasses())
+    this.props.dispatch(fetchCourses())
   }
 
   deleteClass(classId) {
-    this.props.dispatch(deleteClass(classId))
+    this.props.dispatch(deleteCourse(classId))
   }
 
   editClass(classId) {
@@ -24,14 +24,14 @@ class ClassesManager extends Component {
   render() {
     return (
       <section>
-        <h2>Classes</h2>
-        <NewClassForm dispatch={this.props.dispatch} />
+        <h2>Courses</h2>
+        <NewCourseForm dispatch={this.props.dispatch} />
 
         <table className="pure-table">
           <thead>
             <tr>
               <th>Code</th>
-              <th>Class Name</th>
+              <th>Course Name</th>
               <th>Description</th>
               <th></th>
               <th></th>
@@ -39,15 +39,15 @@ class ClassesManager extends Component {
           </thead>
           <tbody>
             {
-              !this.props.classes.length &&
+              !this.props.courses.length &&
               (
                 <tr>
-                  <td colSpan="5">No classes (yet!)</td>
+                  <td colSpan="5">No courses (yet!)</td>
                 </tr>
               )
             }
             {
-              this.props.classes.map((item, index) => {
+              this.props.courses.map((item, index) => {
                 return (
                   <tr key={index}>
                     <td>{item.shortcode}</td>
@@ -76,9 +76,9 @@ class ClassesManager extends Component {
 
 }
 
-ClassesManager.propTypes = {
-  classes: PropTypes.array,
+CoursesManager.propTypes = {
+  courses: PropTypes.array,
   dispatch: PropTypes.func
 }
 
-export default ClassesManager
+export default CoursesManager

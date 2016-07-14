@@ -9,7 +9,7 @@ class Registration extends Component {
     return (
       <article>
         <p>Thank you for interest in Intrepid Biped Potatogram.  You can sign up
-           for classes by filling out this form.</p>
+           for courses by filling out this form.</p>
         <RegistrationForm
           registration={this.props.registration}
           dispatch={this.props.dispatch} />

@@ -3,10 +3,10 @@
 const Model = require('trails-model')
 
 /**
- * @module Classes
- * @description Model for managing information about classes
+ * @module Course
+ * @description Model for managing information about a course.
  */
-module.exports = class Classes extends Model {
+module.exports = class Course extends Model {
 
   static config () {
   }
