@@ -28,27 +28,28 @@ module.exports = class FootprintPolicy extends Policy {
     // Functions that students and admins should have access to.
     function isStudent() {
       const decodedToken = decodeToken()
-      if (decodedToken.role !== 'student' || decodedToken.role !== 'admin') {
-        return reply(Boom.unauthorized('Only admins are able to perform this action'))
+      if (decodedToken.role === 'student' || decodedToken.role === 'admin') {
+        return reply()
       }
-      return reply()
+      return reply(Boom.unauthorized('Only registered students are able to perform this action'))
     }
 
     // Functions that only an admin should have access to.
     function isAdmin() {
       const decodedToken = decodeToken()
-      if (decodedToken.role !== 'admin') {
-        return reply(Boom.unauthorized('Only admins are able to perform this action'))
+      if (decodedToken.role === 'admin') {
+        return reply()
       }
-      return reply()
+      return reply(Boom.unauthorized('Only admins are able to perform this action'))
     }
+
 
     switch (request.params.model) {
 
     case 'auth':
-      return isAdmin()
+      return isStudent()
     case 'course':
-      return isAdmin()
+      return isStudent()
     case 'student':
       return isAdmin()
     default:

@@ -5,7 +5,7 @@ import NewCourseForm from './../organisms/NewCourseForm'
 import {
   fetchCourses,
   deleteCourse
-} from './../../redux/actions/course-actions'
+} from './../../redux/actions/courses-actions'
 
 class CoursesManager extends Component {
 

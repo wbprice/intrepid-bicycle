@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 import {
   submitNewCourse
-} from './../../redux/actions/course-actions'
+} from './../../redux/actions/courses-actions'
 
 class NewCourseForm extends Component {
 

@@ -2,7 +2,7 @@ import {
   SUBMIT_NEW_COURSE_SUCCESS,
   FETCH_COURSES_SUCCESS,
   DELETE_COURSES_SUCCESS
-} from '../actions/course-actions'
+} from '../actions/courses-actions'
 
 const initialState = []
 

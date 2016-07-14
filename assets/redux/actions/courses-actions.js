@@ -124,9 +124,13 @@ export function deleteCourseFailure(error) {
 }
 
 export function deleteCourse(courseid) {
+
+  const token = localStorage.getItem('auth_token')
+
   return dispatch => {
     dispatch(deleteCourseRequest())
     return fetch(`/api/v1/course/${courseid}`, {
+      headers: { 'Authorization': `Bearer ${token}` },
       method: 'delete'
     })
     .then(checkStatus)
