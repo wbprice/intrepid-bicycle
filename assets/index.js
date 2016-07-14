@@ -28,24 +28,17 @@ import 'purecss/build/pure-min.css'
 import './styles/style.scss'
 
 function requireAuth(nextState, replace, cb) {
-
   const token = localStorage.getItem('auth_token')
-
   return fetch(`/auth/verify?auth_token=${token}`)
   .then(response => {
-
     if (!response.ok) {
       replace({
         pathname: '/login',
         state: { nextPathname: nextState.location.pathname }
       })
     }
-
     cb()
-
   })
-
-
 }
 
 render((
