@@ -38,7 +38,7 @@ class HeaderLogin extends Component {
             <span className="app-header-profile-username">{this.props.login.user.name}</span>
             <button
               onClick={this.logout.bind(this)}
-              className="pure-button button-xlarge">Logout</button>
+              className="pure-button">Logout</button>
           </div>
           :
           <Popover
@@ -55,7 +55,7 @@ class HeaderLogin extends Component {
             }>
             <button
               onClick={this.togglePopover.bind(this)}
-              className="pure-button pure-button-primary button-xlarge">Login</button>
+              className="pure-button pure-button-primary">Login</button>
           </Popover>
         }
       </section>
