@@ -50,7 +50,8 @@ class CoursesList extends Component {
 }
 
 CoursesList.propTypes = {
-  courses: PropTypes.array
+  courses: PropTypes.array,
+  dispatch: PropTypes.func
 }
 
 export default CoursesList

@@ -24,6 +24,12 @@ module.exports = class Student extends Model {
 
       interests: {
         type: 'string'
+      },
+
+      courses: {
+        collection: 'course',
+        via: 'students',
+        dominant: true
       }
 
     }

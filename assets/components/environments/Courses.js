@@ -21,6 +21,7 @@ class Courses extends Component {
 
         <CoursesList
           dispatch={this.props.dispatch}
+          user={this.props.user}
           courses={this.props.courses} />
 
       </section>
@@ -29,13 +30,14 @@ class Courses extends Component {
 
 }
 
-Component.propTypes = {
+Courses.propTypes = {
   dispatch: PropTypes.func,
   courses: PropTypes.array
 }
 
 export default connect(
   state => ({
+    user: state.login.user,
     courses: state.courses
   })
 )(Courses)

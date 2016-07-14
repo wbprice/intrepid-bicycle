@@ -95,6 +95,12 @@ module.exports = [
     handler: 'CourseworkController.upload'
   },
 
+  {
+    method: 'POST',
+    path: '/course/join',
+    handler: 'CourseController.join'
+  },
+
   /**
    * Get Signed URL for s3 uploads
    */

@@ -143,3 +143,57 @@ export function deleteCourse(courseid) {
     })
   }
 }
+
+export const JOIN_COURSE_REQUEST = 'JOIN_COURES_REQUEST'
+export const JOIN_COURSE_SUCCESS = 'JOIN_COURSE_SUCCESS'
+export const JOIN_COURSE_FAILURE = 'JOIN_COURSE_FAILURE'
+
+export function joinCourseRequest() {
+  return {
+    type: JOIN_COURSE_REQUEST
+  }
+}
+
+export function joinCourseSuccess(response) {
+  return {
+    type: JOIN_COURSE_SUCCESS,
+    response
+  }
+}
+
+export function joinCourseFailure(error) {
+  return {
+    type: JOIN_COURSE_FAILURE,
+    error
+  }
+}
+
+export function joinCourse(studentId, courseId) {
+
+  const token = localStorage.getItem('auth_token')
+
+  return dispatch => {
+    dispatch(joinCourseRequest())
+    return fetch('/course/join', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: {
+        studentId,
+        courseId
+      }
+    })
+    .then(checkStatus)
+    .then(response => response.json())
+    .then(response => {
+      dispatch(joinCourseSuccess(response))
+    })
+    .catch(error => {
+      dispatch(joinCourseFailure(error))
+    })
+  }
+
+}
