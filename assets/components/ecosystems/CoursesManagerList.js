@@ -1,6 +1,18 @@
 import React, { PropTypes, Component } from 'react'
 
+import {
+  deleteCourse
+} from './../../redux/actions/courses-actions'
+
 class CoursesManagerList extends Component {
+
+  deleteClass(classId) {
+    this.props.dispatch(deleteCourse(classId))
+  }
+
+  editClass(classId) {
+    console.log('unimplemented')
+  }
 
   render() {
     return (
@@ -52,7 +64,8 @@ class CoursesManagerList extends Component {
 }
 
 CoursesManagerList.propTypes = {
-  courses: PropTypes.array
+  courses: PropTypes.array,
+  dispatch: PropTypes.func
 }
 
 export default CoursesManagerList

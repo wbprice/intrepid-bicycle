@@ -2,6 +2,10 @@ import React, { PropTypes, Component } from 'react'
 
 class CoursesList extends Component {
 
+  joinClass() {
+
+  }
+
   render() {
     return (
       <table className="pure-table">
@@ -10,7 +14,6 @@ class CoursesList extends Component {
             <th>Code</th>
             <th>Course Name</th>
             <th>Description</th>
-            <th></th>
             <th></th>
           </tr>
         </thead>
@@ -32,13 +35,8 @@ class CoursesList extends Component {
                   <td>{item.description}</td>
                   <td>
                     <button
-                      onClick={this.editClass.bind(this, item.id)}
-                      className="pure-button button-secondary">Edit</button>
-                  </td>
-                  <td>
-                    <button
-                      onClick={this.deleteClass.bind(this, item.id)}
-                      className="pure-button button-error">Delete</button>
+                      onClick={this.joinClass.bind(this)}
+                      className="pure-button">Join</button>
                   </td>
                 </tr>
               )
