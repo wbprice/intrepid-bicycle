@@ -3,9 +3,9 @@
 const Controller = require('trails-controller')
 
 /**
- * @module ClassesController
+ * @module CourseController
  * @description Generated Trails.js Controller.
  */
-module.exports = class ClassesController extends Controller {
+module.exports = class CourseController extends Controller {
 
 }

@@ -47,7 +47,7 @@ module.exports = class FootprintPolicy extends Policy {
 
     case 'auth':
       return isAdmin()
-    case 'classes':
+    case 'course':
       return isAdmin()
     case 'student':
       return isAdmin()
