@@ -15,6 +15,7 @@ import Admin from './components/environments/Admin'
 import Home from './components/environments/Home'
 import Registration from './components/environments/Registration'
 import Coursework from './components/environments/Coursework'
+import Courses from './components/environments/Courses'
 import Login from './components/environments/Login'
 
 const logger = createLogger()
@@ -56,6 +57,7 @@ render((
         <Route path="/admin" component={Admin} onEnter={requireAuth}/>
         <Route path="/registration" component={Registration} />
         <Route path="/coursework" component={Coursework} onEnter={requireAuth} />
+        <Route path="/courses" component={Courses} onEnter={requireAuth} />
       </Route>
     </Router>
   </Provider>

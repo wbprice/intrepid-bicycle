@@ -40,6 +40,12 @@ module.exports = [
 
   {
     method: 'GET',
+    path: '/courses',
+    handler: 'ViewController.index'
+  },
+
+  {
+    method: 'GET',
     path: '/login',
     handler: 'ViewController.index'
   },
