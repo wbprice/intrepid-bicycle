@@ -4,6 +4,10 @@ import {
   LOGIN_FAILURE
 } from './../actions/login-actions'
 
+import {
+  JOIN_COURSE_SUCCESS
+} from './../actions/courses-actions'
+
 const intialState = {
   isLoggedIn: false,
   user: {},
@@ -27,6 +31,12 @@ export default function logiReducer(state = intialState, action) {
       isLoggedIn: true,
       user: action.response.user,
       error: ''
+    })
+
+  case JOIN_COURSE_SUCCESS:
+    debugger
+    return Object.assign({}, {
+      courses: action.response.courses
     })
 
   default:

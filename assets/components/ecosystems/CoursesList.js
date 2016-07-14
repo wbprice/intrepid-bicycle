@@ -1,9 +1,24 @@
 import React, { PropTypes, Component } from 'react'
 
+import {
+  joinCourse,
+  quitCourse
+} from './../../redux/actions/courses-actions'
+
 class CoursesList extends Component {
 
-  joinClass() {
+  joinClass(courseId) {
+    this.props.dispatch(joinCourse(this.props.user.id, courseId))
+  }
 
+  quitCourse(courseId) {
+    this.props.dispatch(quitCourse(this.props.user.id, courseId))
+  }
+
+  isUserEnrolled(courseId) {
+    return this.props.user.courses.some(course => {
+      return course.id === courseId
+    })
   }
 
   render() {
@@ -34,9 +49,16 @@ class CoursesList extends Component {
                   <td>{item.title}</td>
                   <td>{item.description}</td>
                   <td>
-                    <button
-                      onClick={this.joinClass.bind(this)}
-                      className="pure-button">Join</button>
+                    {
+                      this.isUserEnrolled.call(item.id) ?
+                        <button
+                          onClick={this.joinCourse.bind(this, item.id)}
+                          className="pure-button">Join</button>
+                      :
+                        <button
+                          onClick={this.quitCourse.bind(this, item.id)}
+                          className="pure-button">Quit</button>
+                    }
                   </td>
                 </tr>
               )
@@ -51,7 +73,8 @@ class CoursesList extends Component {
 
 CoursesList.propTypes = {
   courses: PropTypes.array,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  user: PropTypes.object
 }
 
 export default CoursesList

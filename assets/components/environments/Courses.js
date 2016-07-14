@@ -16,14 +16,11 @@ class Courses extends Component {
   render() {
     return (
       <section>
-
         <h1>Sign Up for Courses</h1>
-
         <CoursesList
           dispatch={this.props.dispatch}
           user={this.props.user}
           courses={this.props.courses} />
-
       </section>
     )
   }

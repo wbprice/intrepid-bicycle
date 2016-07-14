@@ -96,9 +96,15 @@ module.exports = [
   },
 
   {
-    method: 'POST',
-    path: '/course/join',
-    handler: 'CourseController.join'
+    method: [ 'POST' ],
+    path: '/course/enrollment',
+    handler: 'CourseController.enroll'
+  },
+
+  {
+    method: [ 'DELETE' ],
+    path: '/course/enrollment',
+    handler: 'CourseController.quit'
   },
 
   /**

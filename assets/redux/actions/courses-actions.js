@@ -174,17 +174,17 @@ export function joinCourse(studentId, courseId) {
 
   return dispatch => {
     dispatch(joinCourseRequest())
-    return fetch('/course/join', {
-      method: 'POST',
+    return fetch('/course/enrollment', {
+      method: 'post',
       headers: {
         'Authorization': `Bearer ${token}`,
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: {
+      body: JSON.stringify({
         studentId,
         courseId
-      }
+      })
     })
     .then(checkStatus)
     .then(response => response.json())
@@ -196,4 +196,55 @@ export function joinCourse(studentId, courseId) {
     })
   }
 
+}
+
+export const QUIT_COURSE_REQUEST = 'QUIT_COURSE_REQUEST'
+export const QUIT_COURSE_SUCCESS = 'QUIT_COURSE_SUCCESS'
+export const QUIT_COURSE_FAILURE = 'QUIT_COURSE_SUCCESS'
+
+export function quitCourseRequest() {
+  return {
+    type: QUIT_COURSE_REQUEST
+  }
+}
+
+export function quitCourseSuccess(response) {
+  return {
+    type: QUIT_COURSE_SUCCESS,
+    response
+  }
+}
+
+export function quitCourseFailure(error) {
+  return {
+    type: QUIT_COURSE_FAILURE,
+    error
+  }
+}
+
+export function quitCourse(studentId, courseId) {
+
+  const token = localStorage.getItem('auth_token')
+
+  return dispatch => {
+    dispatch(quitCourseRequest())
+    return fetch('/course/enrollment', {
+      method: 'delete',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        studentId,
+        courseId
+      })
+    })
+    .then(checkStatus)
+    .then(response => response.json())
+    .then(response => {
+      dispatch(quitCourseSuccess(response))
+    })
+    .catch(error => {
+      dispatch(quitCourseFailure(error))
+    })
+  }
 }
