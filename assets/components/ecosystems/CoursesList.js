@@ -7,7 +7,7 @@ import {
 
 class CoursesList extends Component {
 
-  joinClass(courseId) {
+  joinCourse(courseId) {
     this.props.dispatch(joinCourse(this.props.user.id, courseId))
   }
 
@@ -16,9 +16,11 @@ class CoursesList extends Component {
   }
 
   isUserEnrolled(courseId) {
-    return this.props.user.courses.some(course => {
-      return course.id === courseId
-    })
+    if (this.props.user.courses) {
+      return this.props.user.courses.some(course => {
+        return course.id === courseId
+      })
+    }
   }
 
   render() {
@@ -50,7 +52,7 @@ class CoursesList extends Component {
                   <td>{item.description}</td>
                   <td>
                     {
-                      this.isUserEnrolled.call(item.id) ?
+                      !this.isUserEnrolled.call(this, item.id) ?
                         <button
                           onClick={this.joinCourse.bind(this, item.id)}
                           className="pure-button">Join</button>

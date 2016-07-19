@@ -21,7 +21,6 @@ module.exports = class AuthController extends Controller {
         this.app.orm.Student.findOne({
           emailAddress
         })
-        .populate('courses')
         .then(user => {
           reply({
             token,

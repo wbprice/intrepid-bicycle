@@ -4,13 +4,15 @@ import { connect } from 'react-redux'
 import CoursesList from './../ecosystems/CoursesList'
 
 import {
-  fetchCourses
+  fetchCourses,
+  fetchUserCourses
 } from './../../redux/actions/courses-actions'
 
 class Courses extends Component {
 
   componentWillMount() {
     this.props.dispatch(fetchCourses())
+    this.props.dispatch(fetchUserCourses(this.props.user.id))
   }
 
   render() {
@@ -29,7 +31,8 @@ class Courses extends Component {
 
 Courses.propTypes = {
   dispatch: PropTypes.func,
-  courses: PropTypes.array
+  courses: PropTypes.array,
+  user: PropTypes.object
 }
 
 export default connect(

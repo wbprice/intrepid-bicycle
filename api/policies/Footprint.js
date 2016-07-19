@@ -43,7 +43,6 @@ module.exports = class FootprintPolicy extends Policy {
       return reply(Boom.unauthorized('Only admins are able to perform this action'))
     }
 
-
     switch (request.params.model) {
 
     case 'auth':
@@ -51,7 +50,8 @@ module.exports = class FootprintPolicy extends Policy {
     case 'course':
       return isStudent()
     case 'student':
-      return isAdmin()
+      return isStudent()
+
     default:
       return reply()
 

@@ -79,7 +79,7 @@ export function fetchCoursesFailure(error) {
   }
 }
 
-export function fetchCourses() {
+export function fetchCourses(opts) {
 
   const token = localStorage.getItem('auth_token')
 
@@ -95,6 +95,50 @@ export function fetchCourses() {
     })
     .catch(error => {
       dispatch(fetchCoursesFailure(error))
+    })
+  }
+}
+
+export const FETCH_USER_COURSES_REQUEST = 'FETCH_USER_COURSES_REQUEST'
+export const FETCH_USER_COURSES_SUCCESS = 'FETCH_USER_COURSES_SUCCESS'
+export const FETCH_USER_COURSES_FAILURE = 'FETCH_USER_COURSES_FAILURE'
+
+export function fetchUserCoursesRequest() {
+  return {
+    type: FETCH_USER_COURSES_REQUEST
+  }
+}
+
+export function fetchUserCoursesSuccess(response) {
+  return {
+    type: FETCH_USER_COURSES_SUCCESS,
+    response
+  }
+}
+
+export function fetchUserCoursesFailure(error) {
+  return {
+    type: FETCH_USER_COURSES_FAILURE,
+    error
+  }
+}
+
+export function fetchUserCourses(userId) {
+
+  const token = localStorage.getItem('auth_token')
+
+  return dispatch => {
+    dispatch(fetchUserCoursesRequest())
+    return fetch(`/api/v1/student/${userId}?populate=courses`, {
+      headers: { 'Authorization': `Bearer ${token}` },
+    })
+    .then(checkStatus)
+    .then(response => response.json())
+    .then(response => {
+      dispatch(fetchUserCoursesSuccess(response))
+    })
+    .catch(error => {
+      dispatch(fetchUserCoursesFailure(error))
     })
   }
 }
@@ -144,7 +188,7 @@ export function deleteCourse(courseid) {
   }
 }
 
-export const JOIN_COURSE_REQUEST = 'JOIN_COURES_REQUEST'
+export const JOIN_COURSE_REQUEST = 'JOIN_COURSE_REQUEST'
 export const JOIN_COURSE_SUCCESS = 'JOIN_COURSE_SUCCESS'
 export const JOIN_COURSE_FAILURE = 'JOIN_COURSE_FAILURE'
 

@@ -6,7 +6,9 @@ import {
 } from './../actions/login-actions'
 
 import {
-  JOIN_COURSE_SUCCESS
+  JOIN_COURSE_SUCCESS,
+  FETCH_USER_COURSES_SUCCESS,
+  QUIT_COURSE_SUCCESS
 } from './../actions/courses-actions'
 
 const intialState = {
@@ -36,8 +38,12 @@ export default function logiReducer(state = intialState, action) {
     })
 
   case JOIN_COURSE_SUCCESS:
-    return Object.assign({}, {
-      courses: action.response.courses
+  case FETCH_USER_COURSES_SUCCESS:
+  case QUIT_COURSE_SUCCESS:
+    return Object.assign({}, state, {
+      user: Object.assign({}, state.user, {
+        courses: action.response.courses
+      })
     })
 
   default:

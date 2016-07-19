@@ -14,38 +14,61 @@ module.exports = class CourseController extends Controller {
     const studentId = request.payload.studentId
     const courseId = request.payload.courseId
 
-    this.app.orm.Student.findOne(studentId)
-    .then(student => {
-      student.courses.add(courseId)
-      student.save(err => {
+    Promise.all([
+      this.app.orm.Student.findOne(studentId),
+      this.app.orm.Course.findOne(courseId)
+    ])
+    .then(results => {
+      this.log.info('results are ', results)
+
+      const studentRecord = results[0]
+      const courseRecord = results[1]
+
+      studentRecord.courses.add(courseRecord.id)
+      studentRecord.save(err => {
         if (err) throw err
+        reply(Object.assign({}, studentRecord, {
+          courses: [
+            ...studentRecord.courses,
+            courseRecord
+          ]
+        }))
       })
-      reply(student)
+
     })
     .catch(error => {
-      reply(Boom.badRequest('There was an error. That\'s all we know'))
+      reply(Boom.badRequest('There was an error.  That\'s all we know.'))
     })
   }
 
   quit (request, reply) {
 
-    enroll (request, reply) {
+    const payload = JSON.parse(request.payload)
+    const studentId = payload.studentId
+    const courseId = payload.courseId
 
-      const studentId = request.payload.studentId
-      const courseId = request.payload.courseId
+    Promise.all([
+      this.app.orm.Student.findOne(studentId),
+      this.app.orm.Course.findOne(courseId)
+    ])
+    .then(results => {
 
-      this.app.orm.Student.findOne(studentId)
-      .then(student => {
-        student.courses.remove(courseId)
-        student.save(err => {
-          if (err) throw err
-        })
-        reply(student)
+      const studentRecord = results[0]
+      const courseRecord = results[1]
+
+      studentRecord.courses.remove(courseRecord.id)
+      studentRecord.save(err => {
+        reply(Object.assign({}, studentRecord, {
+          courses: studentRecord.courses.filter(course => {
+            return course.id !== courseRecord.id
+          })
+        }))
       })
-      .catch(error => {
-        reply(Boom.badRequest('There was an error. That\'s all we know'))
-      })
-    }
+
+    })
+    .catch(error => {
+      reply(Boom.badRequest('There was an error.  That\'s all we know.'))
+    })
 
   }
 
