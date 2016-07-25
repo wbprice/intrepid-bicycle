@@ -9,12 +9,16 @@ import appReducer from './redux/reducers'
 import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
 import fetch from 'isomorphic-fetch'
+import {
+  loginRestore
+} from './redux/actions/login-actions'
 
 import App from './components/App'
 import Admin from './components/environments/Admin'
 import Home from './components/environments/Home'
 import Registration from './components/environments/Registration'
 import Coursework from './components/environments/Coursework'
+import Courses from './components/environments/Courses'
 import Login from './components/environments/Login'
 
 const logger = createLogger()
@@ -27,24 +31,23 @@ import 'purecss/build/pure-min.css'
 import './styles/style.scss'
 
 function requireAuth(nextState, replace, cb) {
-
   const token = localStorage.getItem('auth_token')
-
   return fetch(`/auth/verify?auth_token=${token}`)
   .then(response => {
-
     if (!response.ok) {
       replace({
         pathname: '/login',
         state: { nextPathname: nextState.location.pathname }
       })
     }
-
     cb()
-
   })
+}
 
+const savedUser = localStorage.getItem('user')
 
+if (savedUser) {
+  store.dispatch(loginRestore(savedUser))
 }
 
 render((
@@ -56,6 +59,7 @@ render((
         <Route path="/admin" component={Admin} onEnter={requireAuth}/>
         <Route path="/registration" component={Registration} />
         <Route path="/coursework" component={Coursework} onEnter={requireAuth} />
+        <Route path="/courses" component={Courses} onEnter={requireAuth} />
       </Route>
     </Router>
   </Provider>

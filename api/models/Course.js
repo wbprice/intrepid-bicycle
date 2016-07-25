@@ -16,12 +16,20 @@ module.exports = class Course extends Model {
       title: {
         type: 'string'
       },
+
       description: {
         type: 'string'
       },
+
       shortcode: {
         type: 'string'
+      },
+
+      students: {
+        collection: 'student',
+        via: 'courses'
       }
+
     }
   }
 }

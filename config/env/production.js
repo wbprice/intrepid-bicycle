@@ -10,6 +10,11 @@ module.exports = {
     ]
   },
 
+  /**
+   * This 'connection' object could also be a connection string
+   * e.g. 'postgresql://user:password@localhost:5432/databaseName?ssl=false'
+   */
+
   log: {
     logger: new winston.Logger({
       level: 'info',

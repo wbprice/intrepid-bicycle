@@ -40,6 +40,12 @@ module.exports = [
 
   {
     method: 'GET',
+    path: '/courses',
+    handler: 'ViewController.index'
+  },
+
+  {
+    method: 'GET',
     path: '/login',
     handler: 'ViewController.index'
   },
@@ -87,6 +93,18 @@ module.exports = [
     method: [ 'POST' ],
     path: '/coursework',
     handler: 'CourseworkController.upload'
+  },
+
+  {
+    method: [ 'POST' ],
+    path: '/course/enrollment',
+    handler: 'CourseController.enroll'
+  },
+
+  {
+    method: [ 'DELETE' ],
+    path: '/course/enrollment',
+    handler: 'CourseController.quit'
   },
 
   /**

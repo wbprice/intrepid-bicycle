@@ -42,15 +42,12 @@ module.exports = class AuthService extends Service {
   }
 
   verify (token) {
-
     return new Promise((resolve, reject) => {
-
       jwt.verify(token, jwtSecretKey, (err, decoded) => {
         if (err) reject(err)
         resolve(decoded)
       })
     })
-
   }
 
 }
